@@ -1,0 +1,485 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+}
+
+/* Wallet Section */
+.wallet {
+  background: #007bff;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.balance {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.wallet-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.wallet-buttons button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.a1 {
+  color: #007bff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+
+}
+
+.withdraw {
+  flex: 1;
+  background-color: white;
+  border: 2px solid #ffffff;
+  color: #007bff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.recharge {
+  flex: 1;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.refresh-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Main Game Section */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+  background: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.main-content.active {
+  background-color: #f2f2f2;
+  /* Light grey when timer <= 6 */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.countdown {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Big Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.buttons button {
+  flex: 1 1 30%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.green {
+  background-color: #28a745;
+}
+
+.violet {
+  background-color: #6f42c1;
+}
+
+.red {
+  background-color: #dc3545;
+}
+
+/* Number Buttons */
+.number-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.number-buttons button {
+  width: 28%;
+  max-width: 90px;
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Buttons Disabled State */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Game Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+thead {
+  background: #f8f9fa;
+}
+
+.result-dot {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-green {
+  background: #28a745;
+}
+
+.dot-red {
+  background: #dc3545;
+}
+
+.dot-purple {
+  background: #6f42c1;
+}
+
+
+
+
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 480px) {
+  .buttons button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .number-buttons button {
+    width: 28%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .header {
+    font-size: 16px;
+  }
+
+  .countdown {
+    font-size: 20px;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+  }
+
+  .wallet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wallet-buttons {
+    margin-top: 10px;
+  }
+
+  .wallet-buttons button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+.new-row {
+  animation: highlightNew 1s ease;
+  background-color: #d4edda;
+  /* Light green background during animation */
+}
+
+@keyframes highlightNew {
+  0% {
+    background-color: #d4edda;
+  }
+
+  100% {
+    background-color: white;
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-card {
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  animation: popupShow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes popupShow {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.amount-buttons button,
+.multiplier-btn {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.amount-buttons button:hover,
+.multiplier-btn:hover {
+  background: #0056b3;
+  cursor: pointer;
+}
+
+.selectedA {
+  background-color: #dddfe0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.multiplier-btn {
+  margin: 2px 1px;
+  background-color: #ccc;
+  color: #000000;
+  font-weight: 900;
+
+}
+
+p {
+  font-size: 20px;
+}
+
+.popFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.bet-btn {
+  width: fit-content;
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  font-weight: 900;
+  margin: 2px 1px;
+  margin-left: 35px;
+}
+
+h {
+  margin-bottom: 5px;
+  font-size: 10px;
+  width: 280px;
+  text-align: center;
+}
+
+/* Bottom Navigation */
+
+
+.bottom-nav {
+  padding: 8px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ccc;
+  height: 46.5px;
+  z-index: 999;
+}
+
+.nav-item {
+  text-align: center;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: gray;
+  font-size: 10px;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.nav-item i {
+  font-size: 18px;
+  margin-bottom: 2px;
+  transition: 0.3s;
+}
+
+.nav-item.active {
+  color: #007bff;
+}
+
+.nav-item.active i {
+  color: #007bff;
+}
+
+.result-card {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+  min-width: 250px;
+}
+
+.result-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.result-win {
+  color: #28a745;
+  /* Green */
+}
+
+.result-lose {
+  color: #dc3545;
+  /* Red */
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+}
+
+.close-btn:hover {
+  color: #333;
+}

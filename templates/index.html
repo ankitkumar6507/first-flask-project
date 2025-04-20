@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Parity Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Wallet Section -->
+  <div class="wallet">
+    <div class="wallet-info">
+      <div id="balance">Available balance: ₹0.00</div>
+      <div class="wallet-buttons">
+        <a href="{{ url_for('recharge') }}" class="recharge a1">Recharge</a>
+        <a class="withdraw a1">Withdraw</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="main-content">
+
+      <!-- Header Period and Timer -->
+      <h>! Please don't exit page before countdown ends !</h>
+      <div id="tableNo"><b>Table no:</b> 000</div>
+      <div class="header">
+        <div><strong>Period:</strong> <span id="period">20220626043</span></div>
+
+        <div class="countdown" id="timer">Count Down: 00:30</div>
+      </div>
+
+      <!-- Main Buttons -->
+      <div class="buttons">
+        <button onclick="openPopup('green', 'color')" class="green" disabled>Join Green</button>
+        <button onclick="openPopup('purple', 'color')" class="violet" disabled>Join Violet</button>
+        <button onclick="openPopup('red', 'color')" class="red" disabled>Join Red</button>
+      </div>
+
+      <!-- Number Buttons -->
+      <div class="number-buttons">
+        <button onclick="openPopup(0, 'number')" disabled>0</button>
+        <button onclick="openPopup(1, 'number')" disabled>1</button>
+        <button onclick="openPopup(2, 'number')" disabled>2</button>
+        <button onclick="openPopup(3, 'number')" disabled>3</button>
+        <button onclick="openPopup(4, 'number')" disabled>4</button>
+        <button onclick="openPopup(5, 'number')" disabled>5</button>
+        <button onclick="openPopup(6, 'number')" disabled>6</button>
+        <button onclick="openPopup(7, 'number')" disabled>7</button>
+        <button onclick="openPopup(8, 'number')" disabled>8</button>
+        <button onclick="openPopup(9, 'number')" disabled>9</button>
+      </div>
+
+      <!-- Table Records -->
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Price</th>
+            <th>Number</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <a class="nav-item active" id="win-btn">
+        <i class="fas fa-trophy"></i> <!-- Trophy icon -->
+        Win
+      </a>
+      <a href="{{ url_for('profile') }}" class="nav-item" id="profile-btn">
+        <i class="fas fa-user"></i> <!-- User icon -->
+        Profile
+      </a>
+    </div>
+
+  </div>
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-card" id="popupCard">
+      <h2>Selected </h2>
+      <h2 id="selectedItem"></h2>
+      <td><span id="selected"></span></td>
+      <h3 id="winRate">Win: </h3>
+      <div class="amount-buttons, number-buttons">
+        <button onclick="selectAmount(10)">₹10</button>
+        <button onclick="selectAmount(50)">₹50</button>
+        <button onclick="selectAmount(100)">₹100</button>
+        <button onclick="selectAmount(500)">₹500</button>
+        <button onclick="selectAmount(1000)">₹1000</button>
+      </div>
+      <br>
+      <div class="selectedA">
+        <button class="multiplier-btn" onclick="multiplyAmount('-')">-</button>
+        <p id="selectedAmount">₹0</p>
+        <button class="multiplier-btn" onclick="multiplyAmount('+')">+</button>
+      </div>
+
+      <br>
+      <div class="popFooter">
+        <button class="multiplier-btn" onclick="closePopup(false)">Close</button>
+        <button class="bet-btn" onclick="bet()">Bet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Card -->
+  <div id="resultCard" class="result-card" style="display: none;">
+    <span class="close-btn" onclick="closeResultCard()">×</span>
+    <div id="resultText" class="result-text">You Won +₹500</div>
+  </div>
+
+
+
+  <!-- Link JS -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

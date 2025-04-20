@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaction History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .back-btn {
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #007bff;
+    }
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .transaction-card {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .transaction-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+    .transaction-amount {
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+      margin-top: 8px;
+    }
+    .transaction-date {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <button class="back-btn" onclick="goBack()">←</button>
+      <div class="heading">Transaction History</div>
+    </div>
+
+    <!-- Transaction list -->
+    <div class="transaction-card">
+      <div class="transaction-title">Signup Bonus Received</div>
+      <div class="transaction-amount">+ ₹250.00</div>
+      <div class="transaction-date">Received</div>
+    </div>
+
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back(); // Go back to previous page
+    }
+  </script>
+
+</body>
+</html>

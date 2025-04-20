@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Parity Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+<div class="login-container">
+  <h1>Login</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ 'danger' if category == 'error' else category }}" role="alert" style="color: red; font-size: 10px;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
+  
+  <form id="loginForm" method="POST" action="{{ url_for('login') }}">
+    <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" required pattern="[0-9]{10}">
+    <input type="password" id="password" name="password" placeholder="Password" required minlength="6">
+    
+    <button type="submit">Login</button>
+    
+    <p class="signup-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+  </form>
+</div>
+
+>
+
+</body>
+</html>

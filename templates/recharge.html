@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recharge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/recharge.css') }}">
+</head>
+
+<body>
+
+  <!-- Wallet Top Bar with Back Arrow -->
+  <div class="wallet">
+    <a href="{{ url_for('dashboard') }}" class="back-arrow">←</a>
+    <div class="balance">Recharge</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2 class="section-title">Select Recharge Amount</h2>
+
+    <!-- Recharge Amount Buttons -->
+    <div class="recharge-buttons">
+      <button id="btn1" class="recharge-btn"></button>
+      <button id="btn2" class="recharge-btn"></button>
+      <button onclick="showPaymentSection(500)" class="recharge-btn">₹500</button>
+      <button onclick="showPaymentSection(1000)" class="recharge-btn">₹1000</button>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <!-- Payment Section (Initially Hidden) -->
+    <div id="paymentSection" class="payment-section">
+      <h3 id="selectedAmount"></h3>
+      <p>Scan QrCode to pay</p>
+      <img id="qrCodeImage" src="" alt="QR Code" class="qr-code">
+
+      <p>or</p>
+      <p>Copy UPI id to pay</p>
+
+      <p><strong>UPI ID:</strong> <span id="upiId" class="upi-id" onclick="copyUPI()">Loading...</span></p>
+
+      <img style="height: 50vh;" id="exampleUTR"
+        src="https://upipayments.co.in/wp-content/uploads/2023/12/Phonepe-UTR-number-1.png" alt="UTR no example"
+        class="utr-image">
+
+      <form method="POST" action="{{ url_for('recharge') }}">
+        <input type="hidden" name="amount" id="amountInput">
+        <input type="number" name="utr_number" placeholder="Enter UTR Number" required class="utr-input"
+          pattern="[0-9]">
+        <button type="submit" class="recharge-btn submit-btn">Submit UTR</button>
+        <p class="note-text">*Note: Payment will be confirmed within 30 minutes</p>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Link to external JS -->
+  <script src="{{ url_for('static', filename='js/recharge.js') }}"></script>
+
+</body>
+
+</html>

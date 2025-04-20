@@ -1,0 +1,135 @@
+/* Wallet Bar */
+.wallet {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.back-arrow {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.balance {
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Recharge Buttons */
+.recharge-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.recharge-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recharge-btn:hover {
+    background-color: #218838;
+}
+
+/* Payment Section */
+.payment-section {
+    display: none;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.qr-code {
+    width: 200px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.upi-id {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.utr-input {
+    padding: 10px;
+    width: 80%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit-btn {
+    background-color: #007bff;
+}
+
+.note-text {
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .recharge-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+.flash-messages {
+    margin: 10px;
+    text-align: center;
+}
+
+.flash {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+    width: auto;
+    max-width: 90%;
+}
+
+/* Success flash message */
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error flash message */
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
