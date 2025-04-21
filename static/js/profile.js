@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
   .then(data => {
       if (data.balance !== undefined) {
-          balance.textContent = "₹" + data.balance;
+          balance.textContent = "₹" + data.balance + ".00";
           
       } 
   })

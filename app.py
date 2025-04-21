@@ -32,29 +32,19 @@ app.permanent_session_lifetime = timedelta(days=7)
 
 @app.route('/')
 def check_website_status():
-    cursor.execute("SELECT id, is_active, reason FROM website_status LIMIT 1")
-    status = cursor.fetchone()
-
-    if status:
-        id_, is_active, reason = status
-
-        if not is_active:
-
-            # Show reason why site is inactive
-            return f"<h1>🚧 Website is under maintenance: {reason}</h1>"
-        else:
-            # Normal operation (e.g., show signup page or home)
-            if 'mobile' in session:
-                return redirect(url_for('dashboard'))
-            else : 
-                return redirect(url_for('signup'))
-    else:
-        return "❌ No status found in database."
+    if 'mobile' in session:
+         return redirect(url_for('dashboard'))
+    else : 
+         return redirect(url_for('signup'))
 
 # When user visits the signup page (GET)
 @app.route('/signup', methods=['GET'])
 def signup():
-    return render_template('signup.html')
+    if 'mobile' in session:
+         return redirect(url_for('dashboard'))
+    else : 
+         return render_template('signup.html')   
+    
 
 def random_with_N_digits(n):
       range_start = 10**(n-1)
@@ -91,7 +81,7 @@ def register():
     mobile = request.form['mobile']
     email = request.form['email']
     password = request.form['password']
-    balance = 250
+    balance = 250.00
     # check if id already exists
     while True :
         cursor.execute("SELECT * FROM users WHERE id = %s", (id,))
@@ -126,7 +116,11 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-       return render_template('login.html')
+           if 'mobile' in session:
+              return redirect(url_for('dashboard'))
+           else : 
+              return render_template('login.html')
+       
     if request.method == 'POST':
        
         mobile = request.form['mobile']

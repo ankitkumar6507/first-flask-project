@@ -16,7 +16,7 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, message in messages %}
-            <div class="alert alert-{{ 'danger' if category == 'error' else category }}" role="alert">
+            <div class="alert alert-{{ 'danger' if category == 'error' else category }}" role="alert" style="color: red; font-size: 12px;">
               {{ message }}
             </div>
           {% endfor %}
@@ -25,7 +25,7 @@
 
     <form method="POST" action="{{ url_for('signup') }}">
       <input type="text" name="name" placeholder="Name" required>
-      <input type="text" name="mobile" placeholder="Mobile Number" required>
+      <input type="number" name="mobile" placeholder="Mobile Number" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
       <button type="submit">Signup</button>

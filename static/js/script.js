@@ -336,5 +336,7 @@ function closeResultCard() {
     document.getElementById('resultCard').style.display = 'none';
 }
 
-  
+function withdraw() {
+  alert("Recharge one time to withdraw")
+}  
  
