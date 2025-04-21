@@ -1,30 +1,29 @@
 from flask import Flask, render_template, request, flash, jsonify, redirect, url_for, session
-import mysql.connector
+import psycopg2
 from config import Config
 from random import randint
 from datetime import timedelta
 
-
-
-
-
 app = Flask(__name__)
-app.config.from_object(Config)  # Load configuration from config.py
+app.config.from_object(Config)
 
 # Database connection
-db = mysql.connector.connect(
-    host=app.config['MYSQL_HOST'],
-    user=app.config['MYSQL_USER'],
-    password=app.config['MYSQL_PASSWORD'],
-    database=app.config['MYSQL_DB']
+db = psycopg2.connect(
+    host=app.config['DB_HOST'],
+    database=app.config['DB_NAME'],
+    user=app.config['DB_USER'],
+    password=app.config['DB_PASSWORD'],
+    port=app.config['DB_PORT']
 )
-if db.is_connected():
-    print("✅ Database connected successfully!")
-else:
-    print("❌ Unable to connect to the database!")
+
 cursor = db.cursor()
 
+print("✅ PostgreSQL database connected successfully!")
+
 app.permanent_session_lifetime = timedelta(days=7)
+
+# (Rest of your Flask app is the SAME as before)
+
 
 
 
@@ -36,7 +35,8 @@ def check_website_status():
     if status:
         id_, is_active, reason = status
 
-        if is_active == 0:
+        if not is_active:
+
             # Show reason why site is inactive
             return f"<h1>🚧 Website is under maintenance: {reason}</h1>"
         else:
