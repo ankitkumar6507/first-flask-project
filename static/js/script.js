@@ -37,10 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let currentPeriod; // Save the period number globally
 
-function withdraw() {
-  alert("Recharge one time to withdraw")
-}
-
 function startTimer() {
     seconds--;
     if (seconds === 5) {
