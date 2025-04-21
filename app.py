@@ -5,17 +5,20 @@ from random import randint
 from datetime import timedelta
 
 app = Flask(__name__)
+import psycopg2
+from config import Config
+
+app = Flask(__name__)
 app.config.from_object(Config)
 
-# Database connection
+# Connect to PostgreSQL
 db = psycopg2.connect(
     host=app.config['DB_HOST'],
-    database=app.config['DB_NAME'],
     user=app.config['DB_USER'],
     password=app.config['DB_PASSWORD'],
+    database=app.config['DB_NAME'],
     port=app.config['DB_PORT']
 )
-
 cursor = db.cursor()
 
 print("✅ PostgreSQL database connected successfully!")
