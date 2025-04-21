@@ -81,7 +81,7 @@ def register():
     mobile = request.form['mobile']
     email = request.form['email']
     password = request.form['password']
-    balance = 250.00
+    balance = 250
     # check if id already exists
     while True :
         cursor.execute("SELECT * FROM users WHERE id = %s", (id,))

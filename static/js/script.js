@@ -11,7 +11,7 @@ const selectedAmountText = document.getElementById('selectedAmount');
 const tableNo = document.getElementById("tableNo");
 const balancetxt = document.getElementById("balance");
 
-let balance = 0.00;
+let balance = 0;
 let selectedAmount = 0;
 let selectedBetS = "";
 let selectedBetN = -1;
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
   .then(data => {
       if (data.balance !== undefined) {
-          balancetxt.textContent = "Available balance: ₹" + data.balance;
+          balancetxt.textContent = "Available balance: ₹" + data.balance + ".00";
           balance = data.balance;
       } 
   })
@@ -164,7 +164,7 @@ function updateTrend() {
 function initializeGame() {
 
     //set user balance
-    balancetxt.textContent = "Available balance: ₹" + balance;
+    balancetxt.textContent = "Available balance: ₹" + balance + ".00";
     // Set random starting period
     currentPeriod = generateRandomStartPeriod();
     periodEl.textContent = currentPeriod;

@@ -1,4 +1,5 @@
 // Fetch recharge data from backend
+
 fetch('/api/get_recharge_data')
   .then(response => response.json())
   .then(data => {
@@ -10,6 +11,7 @@ fetch('/api/get_recharge_data')
     document.getElementById('btn2').setAttribute('onclick', `showPaymentSection(${data.amount2})`);
 
     document.getElementById('qrCodeImage').src = data.qr_code_link;
+    console.log(data.qr_code_link);
     document.getElementById('upiId').innerText = data.upi_id;
   })
   .catch(error => {
@@ -19,6 +21,7 @@ fetch('/api/get_recharge_data')
 
 // Function to show payment section
 function showPaymentSection(amount) {
+  
   document.getElementById('selectedAmount').innerText = "Amount: ₹" + amount;
   document.getElementById('paymentSection').style.display = 'block';
   document.getElementById('amountInput').value = amount;
